@@ -2,18 +2,73 @@
 
 $(function () {
 
-	$('.menu__hideBtn').click(function () {
-		$(this).toggleClass('hide');
-		$('.menu').toggleClass('hide');
-		$('.main').toggleClass('full');
-	});
+    $('.menu__hideBtn').click(function () {
+        $(this).toggleClass('hide');
+        $('.menu').toggleClass('hide');
+        $('.main').toggleClass('full');
+    });
 
 
-	$('#mode').click(function () {
-		$(this).toggleClass('active');
-		$('#mode .swither__item').toggleClass('active');
-	});
+    $('#mode').click(function () {
+        $(this).toggleClass('active');
+        $('#mode .swither__item').toggleClass('active');
+    });
 
+});
+
+
+$(document).ready(function () {
+    $('.gallery').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        closeOnContentClick: false,
+        closeBtnInside: false,
+        mainClass: 'mfp-with-zoom mfp-img-mobile',
+        image: {
+            verticalFit: true,
+            titleSrc: function (item) {
+                return item.el.attr('title') + ' &middot; <a class="image-source-link" href="' + item.el.attr('data-source') + '" target="_blank"></a>';
+            }
+        },
+        gallery: {
+            enabled: true
+        },
+        zoom: {
+            enabled: true,
+            duration: 300,
+            opener: function (element) {
+                return element.find('img');
+            }
+        }
+
+    });
+});
+
+$(document).ready(function () {
+    $('.fullSizePict').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        closeOnContentClick: false,
+        closeBtnInside: false,
+        mainClass: 'mfp-with-zoom mfp-img-mobile',
+        image: {
+            verticalFit: true,
+            titleSrc: function (item) {
+                return item.el.attr('title') + ' &middot; <a class="image-source-link" href="' + item.el.attr('data-source') + '" target="_blank"></a>';
+            }
+        },
+        gallery: {
+            enabled: true
+        },
+        zoom: {
+            enabled: true,
+            duration: 300,
+            opener: function (element) {
+                return element.find('img');
+            }
+        }
+
+    });
 });
 
 //Swup
@@ -39,8 +94,42 @@ window.addEventListener('load', () => {
     updateCurrentLink(); // Вызов функции при загрузке страницы
 });
 
+
+
+
 //Swup reload updateCurrentLink
 swup.hooks.on('page:view', (visit) => {
     console.log('New page loaded:', visit.to.url);
     updateCurrentLink(); // Повторный запуск функции обновления текущего элемента меню
-  });
+
+
+    $('.gallery').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        closeOnContentClick: false,
+        closeBtnInside: false,
+        mainClass: 'mfp-with-zoom mfp-img-mobile',
+        image: {
+            verticalFit: true,
+            titleSrc: function (item) {
+                return item.el.attr('title') + ' &middot; <a class="image-source-link" href="' + item.el.attr('data-source') + '" target="_blank"></a>';
+            }
+        },
+        gallery: {
+            enabled: true
+        },
+        zoom: {
+            enabled: true,
+            duration: 300,
+            opener: function (element) {
+                return element.find('img');
+            }
+        }
+
+    });
+
+
+});
+
+
+
